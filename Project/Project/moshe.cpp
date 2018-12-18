@@ -5,7 +5,7 @@
 moshe::moshe()
 {
 }
-
+erghe
 
 moshe::~moshe()
 {
