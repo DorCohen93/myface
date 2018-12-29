@@ -10,7 +10,7 @@ using namespace std;
 int menu(Facebook *myFace)
 {
 
-	cout << endl << "1. add member \n2. add fan page \n3. add status\n4. show last 10 statuses\n5. add friendship\n6. add fan to page\n7. show all members and pages\n8. show all friends of member\n9. show all fans of page\n10.exit\n11.extra" << endl;
+	cout << endl << "1. add member \n2. add fan page \n3. add status\n4. show last 10 statuses\n5. add friendship\n6. add fan to page\n7. show all members and pages\n8. show all friends of member\n9. show all fans of page\n10.extra\n11.exit" << endl;
 
 	int choice = 0;
 	cin >> choice;
@@ -146,7 +146,7 @@ int menu(Facebook *myFace)
 		cout << endl << endl;
 	}
 
-	if (choice == 11)
+	if (choice == 10)
 	{
 		int firstindex, secondindex;
 		entity *first, *second;
@@ -173,7 +173,7 @@ void main()
 	Facebook myface;
 	int choice;
 	choice = menu(&myface);
-	while (choice <= 11 && choice>0)
+	while (choice < 10 && choice>0)
 	{
 		choice = menu(&myface);
 

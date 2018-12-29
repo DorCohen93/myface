@@ -15,7 +15,6 @@ private:
 	Date postDate;
 	Time postTime;
 	KIND kind;
-	//		Time postTime;
 
 
 public:

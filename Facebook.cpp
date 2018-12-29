@@ -3,11 +3,16 @@
 void Facebook::ShowMembers()
 {
 	member *tempforcast;
+	int count = 1;
 	for (int i = 0; i < LogicalNumberOfEntities; i++)
 	{
 		tempforcast = dynamic_cast<member*>(ArryOfEntities[i]);
-		if(tempforcast)
-			cout << i << " . " << tempforcast->getName() << endl; //will show only member type
+		if (tempforcast)
+		{
+
+			cout << count << ". " << tempforcast->getName() << " (" << i << ")"<<endl; //will show only member type
+			count++;
+		}
 	}
 
 }
@@ -17,11 +22,16 @@ void Facebook::ShowFanPage()
 {
 	cout << "below you can see all the pages Facebook currently have" << endl;
 	fanPage *tempforcast;
+	int count = 1;
 	for (int i = 0; i < LogicalNumberOfEntities; i++)
 	{
 		tempforcast = dynamic_cast<fanPage*>(ArryOfEntities[i]);
 		if (tempforcast)
-			cout << i << " . " << tempforcast->getName() << endl; //will show only member type
+		{ 
+			cout <<count << ". " << tempforcast->getName() << " ("<<i<< ")"<<endl; //will show only member type
+			count++;
+
+		}
 	}
 
 }
@@ -74,23 +84,28 @@ void Facebook::setfriendship()
 {
 	member *first, *second;
 	int firstindex, secondindex, decision, flag=0;
-
-	cout << endl << "From the below users, choose the numbers of the two you want to set as friends " << endl;
+	bool flag1;
+	cout << endl << "From the below users, choose the numbers of the two you want to set as friends (the right number) " << endl;
 	this->ShowMembers();
 	cout << "\nfirst member : ";
 	cin >> firstindex;
 	cout << "\nsecond member : ";
 	cin >> secondindex;
-	while (firstindex == secondindex)
+	flag1 = firstindex == secondindex || firstindex < 0 || secondindex < 0 || secondindex > LogicalNumberOfEntities || firstindex > LogicalNumberOfEntities;
+
+	while (flag1)
 	{
-		cout << "you cannot be a friend of yourself ";
-		cout << endl << "From the below users, choose the numbers of the two you want to set as friends " << endl;
+		cout << "you cannot be a friend of yourself " << flag1;
+		cout << endl << "From the below users, choose the numbers of the two you want to set as friends (the right number) " << endl;
 		this->ShowMembers();
 		cout << "\nfirst member : ";
 		cin >> firstindex;
 		cout << "\nsecond member : ";
 		cin >> secondindex;
+		flag1 = firstindex == secondindex || firstindex < 0 || secondindex < 0 || secondindex > LogicalNumberOfEntities || firstindex > LogicalNumberOfEntities;
+
 	}
+	
 	first = this->GetMember(firstindex);
 	second = this->GetMember(secondindex);
 	cout << "Please confirm you would like to set " << first->getName() << " and " << second->getName() << "as friends" << endl;
